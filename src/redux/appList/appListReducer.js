@@ -1,20 +1,13 @@
+import getPersistedState from '../../utils/getPersistedState';
+
 import AppListTypes from './appListTypes';
 
 const INITIAL_STATE = {
-  appLists:
-    (localStorage.getItem('greedyGameAppLists') &&
-      JSON.parse(localStorage.getItem('greedyGameAppLists')).res1) ||
-    {},
+  appLists: getPersistedState('greedyGameAppLists', 'res1') || {},
   isFetching: false,
   error: null,
-  currentAppStats:
-    (localStorage.getItem('greedyGameAppStats') &&
-      JSON.parse(localStorage.getItem('greedyGameAppStats'))) ||
-    {},
-  appStats:
-    (localStorage.getItem('greedyGameAppLists') &&
-      JSON.parse(localStorage.getItem('greedyGameAppLists')).res2) ||
-    {},
+  currentAppStats: getPersistedState('greedyGameAppStats') || {},
+  appStats: getPersistedState('greedyGameAppLists', 'res2') || {},
 };
 
 const appListReducer = (state = INITIAL_STATE, action) => {
