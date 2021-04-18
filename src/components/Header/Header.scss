@@ -1,0 +1,19 @@
+@import '../../main';
+
+.header {
+  background-color: $header-background;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  border: none;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $primary-color;
+  letter-spacing: 0.3rem;
+}

@@ -1,0 +1,28 @@
+.card-body {
+  display: flex;
+  margin-top: 1.5rem;
+  white-space: nowrap;
+
+  & > div {
+    margin-right: 2rem;
+
+    & > div:first-of-type {
+      font-size: 0.6rem;
+    }
+
+    & > div:last-of-type {
+      margin-top: 0.3rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 924px) {
+  .card-body {
+    justify-content: space-between;
+
+    & > div {
+      margin-right: unset;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import '../../main';
+
+.adsoul {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: $primary-color;
+
+  & > div {
+    height: 50%;
+  }
+
+  & > div:first-of-type {
+    height: calc(50% - $header-height);
+    background-color: $header-background;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 3;
+
+    & > div {
+      height: 15rem;
+      width: 15rem;
+    }
+  }
+
+  .adsoul-services {
+    background-color: rgb(97, 87, 220);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & > h2 {
+      margin-bottom: 2rem;
+    }
+
+    .adsoul-sevices-icon-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+
+      & > div {
+        height: 3rem;
+        width: 3rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .adsoul {
+    position: unset;
+
+    & > div {
+      height: 100%;
+      padding-bottom: 2.5rem !important;
+    }
+
+    .adsoul-services {
+      display: none;
+    }
+  }
+}

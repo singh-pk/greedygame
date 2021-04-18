@@ -1,0 +1,44 @@
+@import '../../main';
+
+.company-details {
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+
+  .company-logo {
+    height: 3rem;
+    min-width: 3rem;
+    max-width: 3rem;
+    border-radius: $border-radius;
+
+    &[color='orange'] {
+      background-color: $logo-color-first;
+    }
+
+    &[color='green'] {
+      background-color: $logo-color-second;
+    }
+
+    &[color='blue'] {
+      background-color: $logo-color-third;
+    }
+  }
+
+  .company-offical-names {
+    margin-left: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .company-name {
+      font-size: 1.5rem;
+    }
+
+    .company-publisher {
+      font-size: 0.7rem;
+      color: $subHeading-color;
+      margin-left: 0.1rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+}

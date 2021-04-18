@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-function App() {
+import HomePage from './pages/HomePage/HomePage';
+import AppDetailsPage from './pages/AppDetailsPage/AppDetailsPage';
+
+import Header from './components/Header/Header';
+import WithSpinner from './components/WithSpinner/WithSpinner';
+
+import {
+  selectIsFetching,
+  selectCurrentAppStats,
+  selectAppStats,
+} from './redux/appList/appListSelectors';
+
+import './App.scss';
+
+const AppDetailsPageWithSpinner = WithSpinner(AppDetailsPage);
+
+const App = ({ appStates, currentAppStats, isFetching, location }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {location.pathname !== '/' && <Header />}
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route
+          exact
+          path='/appDetails'
+          render={props =>
+            !!Object.keys(currentAppStats).length && !!currentAppStats.color ? (
+              <AppDetailsPageWithSpinner
+                isLoading={isFetching}
+                color={currentAppStats.color}
+                appId={currentAppStats.appId}
+                currentAppStats={appStates[currentAppStats.appId]}
+                {...props}
+              />
+            ) : (
+              <Redirect to='/' />
+            )
+          }
+        />
+      </Switch>
+    </>
   );
-}
+};
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  appStates: selectAppStats,
+  currentAppStats: selectCurrentAppStats,
+  isFetching: selectIsFetching,
+});
+
+export default withRouter(connect(mapStateToProps)(App));

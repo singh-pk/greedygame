@@ -1,0 +1,29 @@
+@import '../../main';
+
+.app-list {
+  overflow-y: scroll;
+
+  .app-list-header {
+    height: 8rem;
+    font-size: 1.8rem;
+    background-color: $primary-color;
+    display: flex;
+    align-items: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .app-list {
+    overflow-y: unset;
+
+    .app-list-header {
+      position: unset;
+      height: unset;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+}

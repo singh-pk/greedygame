@@ -1,0 +1,15 @@
+@import '../../main';
+
+.card {
+  background-color: $primary-color;
+  border-radius: $border-radius;
+  border: $border;
+  padding: 2rem;
+  margin: 1rem 0;
+  transition: 0.3s transform ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+  }
+}

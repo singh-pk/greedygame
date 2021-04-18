@@ -1,0 +1,43 @@
+@import '../../main';
+
+@mixin route-change-icon-rotate($angle) {
+  content: '';
+  position: absolute;
+  right: 0;
+  transform-origin: right;
+  width: 0.7rem;
+  top: -1px;
+  height: 0;
+  border-width: 1px;
+  background-color: $route-change-icon-color;
+  border-style: solid;
+  border-color: inherit;
+  transform: rotate($angle);
+  border-radius: $border-radius;
+}
+
+.route-change-icon-container {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  height: 0;
+
+  .route-change-icon {
+    width: 1rem;
+    border: 1px solid $route-change-icon-color;
+    border-radius: $border-radius;
+    position: relative;
+    background-color: $route-change-icon-color;
+
+    &::before {
+      @include route-change-icon-rotate(45deg);
+    }
+
+    &::after {
+      @include route-change-icon-rotate(-45deg);
+    }
+
+    &.route-change-icon-back {
+      transform: rotate(180deg);
+    }
+  }
+}

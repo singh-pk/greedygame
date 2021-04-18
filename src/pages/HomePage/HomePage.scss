@@ -1,0 +1,25 @@
+@import '../../main';
+
+.homepage {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > section {
+    flex: 1 1 400px;
+    height: 100vh;
+
+    & > div {
+      padding: 1rem 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .homepage {
+    margin-top: calc(#{$header-height} - 0.1rem);
+
+    & > section {
+      height: unset;
+    }
+  }
+}
