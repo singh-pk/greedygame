@@ -1,6 +1,6 @@
-const persistData = data => {
+const persistData = (name, data) => {
   if (typeof window !== undefined) {
-    localStorage.setItem('greedyGame', JSON.stringify(data));
+    localStorage.setItem(`${name}`, JSON.stringify(data));
   }
 };
 

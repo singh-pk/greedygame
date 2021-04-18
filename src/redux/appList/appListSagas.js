@@ -20,7 +20,7 @@ function* fetchAppListsStart() {
     res1 = transformData(res1.data);
     res2 = res2.data;
     yield put(fetchAppListsSuccess({ res1, res2 }));
-    yield call(persistData, { ...{ res1, res2 } });
+    yield call(persistData, 'greedyGameAppLists', { res1, res2 });
   } catch (err) {
     yield put(fetchAppListsFailure(err));
   }
@@ -29,6 +29,7 @@ function* fetchAppListsStart() {
 function* fetchAppStatsStart({ payload: { appId, color } }) {
   try {
     yield put(fetchAppStatsSuccess({ appId, color }));
+    yield call(persistData, 'greedyGameAppStats', { appId, color });
   } catch (err) {
     yield fetchAppStatsFailure(err);
   }

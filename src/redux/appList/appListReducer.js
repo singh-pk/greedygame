@@ -1,15 +1,29 @@
 import AppListTypes from './appListTypes';
 
 const INITIAL_STATE = {
-  appLists: {},
-  isFetching: true,
+  appLists:
+    (localStorage.getItem('greedyGameAppLists') &&
+      JSON.parse(localStorage.getItem('greedyGameAppLists')).res1) ||
+    {},
+  isFetching: false,
   error: null,
-  currentAppStats: {},
-  appStats: {},
+  currentAppStats:
+    (localStorage.getItem('greedyGameAppStats') &&
+      JSON.parse(localStorage.getItem('greedyGameAppStats'))) ||
+    {},
+  appStats:
+    (localStorage.getItem('greedyGameAppLists') &&
+      JSON.parse(localStorage.getItem('greedyGameAppLists')).res2) ||
+    {},
 };
 
 const appListReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case AppListTypes.FETCH_APP_LISTS_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
     case AppListTypes.FETCH_APP_LISTS_SUCCESS:
       return {
         ...state,
